@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="Sai Gugulothu is a cybersecurity-focused developer building end-to-end threat detection systems, ML-driven security tools, and accessible projects." />
+  <meta property="og:title" content="Sai Gugulothu — Cybersecurity Developer" />
+  <meta property="og:description" content="Cybersecurity-focused developer building phishing detection systems, network monitoring, and accessible communication tools." />
+  <meta property="og:type" content="website" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Sai Gugulothu — Cybersecurity Developer" />
+  <meta property="twitter:description" content="Cybersecurity-focused developer building phishing detection systems, network monitoring, and accessible communication tools." />
+  <meta name="theme-color" content="#080b10" />
+  <title>Sai Gugulothu — Cybersecurity Developer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080b10'/%3E%3Cpath d='M20 18h24v8H28v6h12v8H28v6h16v8H20z' fill='%2300e5ff'/%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080b10; --surface: #0e1318; --border: #1c2530;
+      --accent: #00e5ff; --accent2: #7b61ff; --text: #e8edf2;
+      --muted: #9aa8b4; --card: #0d1520;
+      --error: #ff6b6b; --success: #4cd964;
+      --card-gradient: linear-gradient(135deg, rgba(13,21,32,0.98), rgba(8,11,16,0.96));
+      --accent-soft: rgba(0,229,255,0.16);
+      --accent-strong: #00d7ff;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: "Syne", sans-serif; overflow-x: hidden; cursor: auto; }
+    body.nav-open { overflow: hidden; }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025; pointer-events: none; z-index: 9000;
+    }
+    body::after {
+      content: ""; position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none; z-index: 0;
+    }
+    a, button, input, textarea { font: inherit; }
+    a, button, input, textarea { outline-offset: 2px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; background: linear-gradient(to bottom, rgba(8,11,16,0.97), transparent); backdrop-filter: blur(8px); }
+    .nav-logo { font-size: 1.1rem; font-weight: 800; letter-spacing: 0.08em; color: var(--accent); font-family: "DM Mono", monospace; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; font-family: "DM Mono", monospace; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+    .nav-resume { padding: 7px 16px !important; border: 1px solid var(--accent) !important; color: var(--accent) !important; transition: background 0.2s, color 0.2s !important; }
+    .nav-resume:hover, .nav-resume:focus-visible { background: var(--accent) !important; color: #000 !important; }
+    .nav-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; border-radius: 8px; }
+    .nav-toggle span { display: block; width: 18px; height: 2px; background: currentColor; position: relative; }
+    .nav-toggle span::before, .nav-toggle span::after { content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: currentColor; transition: transform 0.2s ease; }
+    .nav-toggle span::before { top: -6px; }
+    .nav-toggle span::after { top: 6px; }
+    .nav-overlay { display: none; }
+    #hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 48px; z-index: 1; overflow: hidden; }
+    .hero-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,229,255,0.12) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; animation: floatGlow 8s ease-in-out infinite; }
+    .hero-glow2 { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(123,97,255,0.1) 0%, transparent 70%); bottom: 0; left: 200px; pointer-events: none; animation: floatGlow 10s ease-in-out infinite reverse; }
+    .hero-glow3 { position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%); bottom: 120px; right: 120px; pointer-events: none; animation: floatGlow 7s ease-in-out infinite; }
+    @keyframes floatGlow { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(-30px,30px); } }
+    .hero-tag { font-family: "DM Mono", monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+    .hero-name { font-size: clamp(3.5rem, 9vw, 8rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; max-width: 12ch; }
+    .hero-name span { display: block; background: linear-gradient(135deg, #fff 40%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { margin-top: 24px; font-size: 1.05rem; color: var(--muted); max-width: 540px; line-height: 1.75; font-family: "DM Mono", monospace; font-weight: 300; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+    .hero-sub strong { color: var(--accent); font-weight: 400; }
+    .hero-cta { margin-top: 44px; display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+    .btn-primary, .btn-outline, .project-btn, .project-btn-secondary, .github-btn {
+      position: relative; overflow: hidden; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+    .btn-primary {
+      padding: 14px 32px; background: linear-gradient(135deg, var(--accent), var(--accent-strong)); color: #000; font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; box-shadow: 0 0 0 rgba(0,229,255,0.25);
+    }
+    .btn-primary::after, .project-btn::after, .project-btn-secondary::after, .github-btn::after {
+      content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent); transform: translateX(-120%); transition: transform 0.45s ease;
+    }
+    .btn-primary:hover::after, .btn-primary:focus-visible::after, .project-btn:hover::after, .project-btn:focus-visible::after, .project-btn-secondary:hover::after, .project-btn-secondary:focus-visible::after, .github-btn:hover::after, .github-btn:focus-visible::after { transform: translateX(120%); }
+    .btn-primary:hover, .btn-primary:focus-visible, .project-btn:hover, .project-btn:focus-visible, .project-btn-secondary:hover, .project-btn-secondary:focus-visible, .github-btn:hover, .github-btn:focus-visible { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,229,255,0.18); }
+    .btn-outline { padding: 14px 32px; border: 1px solid var(--border); color: var(--text); font-family: "Syne", sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; background: rgba(255,255,255,0.02); }
+    .btn-outline:hover, .btn-outline:focus-visible { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,229,255,0.08); }
+    .hero-stats { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 14px; margin-top: 32px; max-width: 680px; opacity: 0; animation: fadeUp 0.8s 1s forwards; }
+    .hero-stat {
+      padding: 16px 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.025); backdrop-filter: blur(8px); border-radius: 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+    .hero-stat-number { font-size: 1.35rem; font-weight: 800; color: var(--accent); margin-bottom: 6px; font-family: "DM Mono", monospace; }
+    .hero-stat-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.5; font-family: "DM Mono", monospace; }
+    .hero-scroll { position: absolute; bottom: 40px; left: 48px; display: flex; align-items: center; gap: 12px; font-family: "DM Mono", monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; opacity: 0; animation: fadeUp 1s 1.2s forwards; }
+    .scroll-line { width: 40px; height: 1px; background: var(--muted); animation: expandLine 1.5s 1.5s forwards; transform-origin: left; transform: scaleX(0); }
+    @keyframes expandLine { to { transform: scaleX(1); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    main { position: relative; z-index: 1; }
+    section { position: relative; z-index: 1; }
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
+    .section-label { font-family: "DM Mono", monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 48px; color: var(--text); }
+    .hint { font-family: "DM Mono", monospace; font-size: 0.7rem; color: var(--muted); margin-top: 14px; font-weight: 300; border-left: 2px solid var(--border); padding-left: 12px; }
+    #about .section-inner { display: block; max-width: 750px; }
+    .about-text p { color: var(--muted); line-height: 1.8; font-family: "DM Mono", monospace; font-weight: 300; font-size: 0.9rem; margin-bottom: 16px; }
+    .about-text p strong { color: var(--text); font-weight: 400; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .stat-box { background: var(--card); border: 1px solid var(--border); padding: 28px 24px; transition: border-color 0.2s; }
+    .stat-box:hover { border-color: var(--accent); }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-family: "DM Mono", monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.5; }
+    #education { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .edu-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .edu-card { background: var(--card-gradient); border: 1px solid var(--border); padding: 32px 28px; transition: border-color 0.25s, transform 0.25s; position: relative; min-width: 0; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18); }
+    .edu-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .edu-card:hover::before { transform: scaleX(1); }
+    .edu-card:hover { border-color: rgba(0,229,255,0.2); transform: translateY(-3px); }
+    .edu-badge { font-family: "DM Mono", monospace; font-size: 0.65rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+    .edu-title { font-size: 1rem; font-weight: 700; margin-bottom: 6px; overflow-wrap: anywhere; }
+    .edu-sub { font-family: "DM Mono", monospace; font-size: 0.78rem; color: var(--muted); font-weight: 300; line-height: 1.6; overflow-wrap: anywhere; }
+    .edu-year { margin-top: 14px; font-family: "DM Mono", monospace; font-size: 0.7rem; color: var(--accent2); letter-spacing: 0.1em; }
+    .cert-section-label { font-family: "DM Mono", monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin: 32px 0 12px; }
+    .cert-list { display: flex; flex-direction: column; gap: 2px; }
+    .cert-item { background: var(--card-gradient); border: 1px solid var(--border); padding: 18px 28px; display: flex; align-items: center; gap: 16px; transition: border-color 0.2s, transform 0.2s; }
+    .cert-item:hover { border-color: rgba(0,229,255,0.2); transform: translateY(-2px); }
+    .cert-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .cert-name { font-size: 0.88rem; font-weight: 600; flex: 1; overflow-wrap: anywhere; }
+    .cert-issuer { font-family: "DM Mono", monospace; font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
+    #skills { border-top: 1px solid var(--border); }
+    .skills-focus-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.2); padding: 6px 14px; font-family: "DM Mono", monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 24px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 2px; margin-bottom: 24px; }
+    .skill-card { background: var(--card-gradient); border: 1px solid var(--border); padding: 32px 28px; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; min-width: 0; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16); }
+    .skill-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+    .skill-card:hover::before { transform: scaleX(1); }
+    .skill-card:hover { border-color: rgba(0,229,255,0.2); transform: translateY(-3px); box-shadow: 0 18px 36px rgba(0,229,255,0.1); }
+    .skill-card.primary { border-color: rgba(0,229,255,0.12); background: linear-gradient(135deg, rgba(0,229,255,0.04), rgba(11,19,28,0.98)); }
+    .skill-icon { font-size: 1.8rem; margin-bottom: 16px; }
+    .skill-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; overflow-wrap: anywhere; }
+    .skill-focus-label { font-family: "DM Mono", monospace; font-size: 0.62rem; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .tag { font-family: "DM Mono", monospace; font-size: 0.65rem; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .tag.hl { border-color: rgba(0,229,255,0.3); color: var(--accent); }
+    .skill-bars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .skill-bar-card { background: var(--card-gradient); border: 1px solid var(--border); padding: 20px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16); }
+    .skill-bar-row { margin-bottom: 14px; }
+    .skill-bar-row:last-child { margin-bottom: 0; }
+    .skill-bar-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; }
+    .skill-bar-track { height: 8px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+    .skill-bar-fill { height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent2)); box-shadow: 0 0 18px rgba(0,229,255,0.18); transition: width 1.1s ease; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 18px; }
+    .project-card {
+      background: var(--card-gradient); border: 1px solid var(--border); padding: 28px 24px; position: relative; overflow: hidden; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; min-width: 0; border-radius: 20px; box-shadow: 0 14px 36px rgba(0,0,0,0.18);
+    }
+    .project-card::before {
+      content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, rgba(0,229,255,0.08), transparent 55%, rgba(123,97,255,0.06)); opacity: 0; transition: opacity 0.25s ease; pointer-events: none;
+    }
+    .project-card:hover::before { opacity: 1; }
+    .project-card:hover { border-color: rgba(0,229,255,0.32); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,229,255,0.12); }
+    .project-card.ongoing { border-color: rgba(123,97,255,0.2); }
+    .project-num { font-family: "DM Mono", monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.2em; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .badge-ongoing { font-family: "DM Mono", monospace; font-size: 0.6rem; color: var(--accent2); border: 1px solid var(--accent2); padding: 2px 8px; letter-spacing: 0.1em; animation: pulse 2s infinite; box-shadow: 0 0 14px rgba(123,97,255,0.22); }
+    .badge-launched { font-family: "DM Mono", monospace; font-size: 0.6rem; color: var(--accent); border: 1px solid rgba(0,229,255,0.35); padding: 2px 8px; letter-spacing: 0.1em; background: rgba(0,229,255,0.08); box-shadow: 0 0 14px rgba(0,229,255,0.18); }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+    .project-preview {
+      margin: 16px 0 18px; min-height: 140px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,229,255,0.04)); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .preview-window { width: min(100%, 260px); padding: 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); text-align: center; font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; background: rgba(8,11,16,0.58); }
+    .project-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; overflow-wrap: anywhere; }
+    .project-desc { font-family: "DM Mono", monospace; font-size: 0.82rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 16px; overflow-wrap: anywhere; }
+    .project-arch { font-family: "DM Mono", monospace; font-size: 0.78rem; color: var(--text); line-height: 1.65; margin-bottom: 20px; padding: 14px 16px; background: rgba(0,229,255,0.04); border-left: 2px solid var(--accent); overflow-wrap: anywhere; }
+    .project-arch span { color: var(--accent); }
+    .project-arch ul { padding-left: 18px; margin: 10px 0 0; }
+    .project-arch li { margin-bottom: 4px; }
+    .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .project-btn, .project-btn-secondary, .github-btn { padding: 11px 16px; border: 1px solid rgba(0,229,255,0.28); color: var(--accent); font-family: "DM Mono", monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; white-space: nowrap; width: 100%; justify-content: center; }
+    .project-btn { background: linear-gradient(135deg, rgba(0,229,255,0.18), rgba(0,229,255,0.08)); }
+    .project-btn-secondary { border-color: rgba(255,255,255,0.12); color: var(--text); background: rgba(255,255,255,0.02); }
+    .project-btn[aria-disabled="true"], .project-btn-secondary[aria-disabled="true"] { opacity: 0.7; cursor: not-allowed; pointer-events: auto; }
+    .project-btn[aria-disabled="true"]:hover, .project-btn-secondary[aria-disabled="true"]:hover { transform: none; box-shadow: none; }
+    .project-btn:hover, .project-btn:focus-visible, .project-btn-secondary:hover, .project-btn-secondary:focus-visible { border-color: rgba(0,229,255,0.42); }
+    .project-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+    .project-actions.inline { flex-direction: row; }
+    .tooltip { position: relative; display: inline-block; }
+    .tooltip::after {
+      content: attr(data-tooltip); position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translateX(-50%) translateY(4px); background: rgba(8,11,16,0.96); border: 1px solid rgba(0,229,255,0.2); color: var(--text); padding: 8px 10px; border-radius: 8px; font-size: 0.68rem; line-height: 1.4; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; white-space: nowrap; z-index: 3;
+    }
+    .tooltip:hover::after, .tooltip:focus-within::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+    #github { background: var(--surface); border-top: 1px solid var(--border); }
+    .github-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    .github-card { background: var(--card-gradient); border: 1px solid var(--border); padding: 24px; border-radius: 18px; box-shadow: 0 12px 30px rgba(0,0,0,0.16); }
+    .github-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .github-card p { font-family: "DM Mono", monospace; font-size: 0.8rem; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+    .github-btn { margin-top: 4px; width: fit-content; padding: 12px 18px; }
+    .github-card img {
+      width: 100%; display: block; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: rgba(8,11,16,0.46);
+    }
+    .github-card .github-stat-image { min-height: 180px; object-fit: cover; }
+    .github-placeholder { min-height: 140px; border-radius: 14px; border: 1px dashed rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: "DM Mono", monospace; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-align: center; padding: 16px; }
+    #contact { background: var(--surface); border-top: 1px solid var(--border); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-info p { font-family: "DM Mono", monospace; font-size: 0.85rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 32px; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; }
+    .contact-link { display: flex; align-items: center; gap: 14px; font-family: "DM Mono", monospace; font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s, transform 0.2s; }
+    .contact-link:hover, .contact-link:focus-visible { color: var(--accent); transform: translateX(4px); }
+    .contact-link-icon { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: border-color 0.2s, box-shadow 0.2s; border-radius: 10px; }
+    .contact-link:hover .contact-link-icon, .contact-link:focus-visible .contact-link-icon { border-color: var(--accent); box-shadow: 0 0 18px rgba(0,229,255,0.12); }
+    .resume-bar { margin-top: 28px; background: rgba(0,229,255,0.04); border: 1px solid rgba(0,229,255,0.15); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-radius: 16px; }
+    .resume-bar-text { font-family: "DM Mono", monospace; font-size: 0.78rem; color: var(--muted); font-weight: 300; line-height: 1.5; }
+    .resume-bar-text strong { display: block; color: var(--text); font-weight: 400; margin-bottom: 2px; }
+    .resume-dl { padding: 9px 20px; border: 1px solid var(--accent); color: var(--accent); font-family: "DM Mono", monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: background 0.2s, color 0.2s; border-radius: 999px; }
+    .resume-dl:hover, .resume-dl:focus-visible { background: var(--accent); color: #000; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label { font-family: "DM Mono", monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+    .form-input, .form-textarea { background: var(--bg); border: 1px solid var(--border); color: var(--text); font-family: "DM Mono", monospace; font-size: 0.85rem; padding: 14px 16px; outline: none; transition: border-color 0.2s; resize: none; border-radius: 12px; }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { height: 120px; }
+    .form-error { font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--error); min-height: 1rem; }
+    .form-status { display: none; padding: 14px 16px; border: 1px solid var(--border); font-family: "DM Mono", monospace; font-size: 0.8rem; line-height: 1.5; border-radius: 12px; }
+    .form-status.show { display: block; }
+    .form-status.success { border-color: rgba(76,217,100,0.35); background: rgba(76,217,100,0.08); color: var(--success); }
+    .form-status.error { border-color: rgba(255,107,107,0.35); background: rgba(255,107,107,0.08); color: var(--error); }
+    .form-btn { padding: 14px; background: linear-gradient(135deg, var(--accent), var(--accent-strong)); color: #000; font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; }
+    .form-btn:hover, .form-btn:focus-visible { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,229,255,0.18); }
+    .form-btn:disabled { opacity: 0.8; cursor: wait; transform: none; }
+    .form-btn .spinner { width: 14px; height: 14px; border: 2px solid rgba(0,0,0,0.25); border-top-color: #000; border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
+    .form-btn.loading .spinner { display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; }
+    footer p { font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
+    footer span { color: var(--accent); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .github-grid { grid-template-columns: 1fr; }
+      .skill-bars { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        position: fixed; top: 0; right: 0; width: min(82vw, 280px); height: 100vh; padding: 88px 24px 24px; flex-direction: column; align-items: flex-start; gap: 18px; background: var(--surface); border-left: 1px solid var(--border); transform: translateX(100%); transition: transform 0.25s ease; z-index: 120;
+      }
+      .nav-links.open { transform: translateX(0); }
+      .nav-overlay {
+        display: block; position: fixed; inset: 0; background: rgba(8,11,16,0.7); backdrop-filter: blur(4px); opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; z-index: 110;
+      }
+      .nav-overlay.show { opacity: 1; visibility: visible; }
+      .nav-links a { font-size: 0.8rem; }
+      #hero { padding: 0 20px; }
+      .section-inner { padding: 70px 20px; }
+      .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .resume-bar { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px; }
+    }
+    @media (max-width: 480px) {
+      .hero-name { font-size: clamp(2.8rem, 12vw, 3.5rem); }
+      .hero-tag { font-size: 0.68rem; }
+      .hero-sub { font-size: 0.95rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .section-title { margin-bottom: 32px; }
+      .project-card, .skill-card, .edu-card, .cert-item, .github-card { padding: 24px 18px; }
+      .cert-item { flex-direction: column; align-items: flex-start; }
+      .contact-links { gap: 10px; }
+      .project-actions.inline { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary navigation">
+      <a href="#hero" class="nav-logo" aria-label="Go to top of page">SAI_</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation menu">
+        <span></span>
+      </button>
+      <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+      <div class="nav-links" id="primary-nav">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.pdf" class="nav-resume" data-resume-fallback="mailto:saig21851@gmail.com?subject=Resume%20Request" data-resume-link download>Resume</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" aria-labelledby="hero-title">
+      <div class="hero-glow"></div>
+      <div class="hero-glow2"></div>
+      <div class="hero-glow3"></div>
+      <p class="hero-tag">// B.Tech CSE (DS) &middot; Vignan Institute &middot; Cybersecurity Engineering &middot; Open to Work</p>
+      <h1 id="hero-title" class="hero-name"><span>Sai Gugulothu.</span></h1>
+      <p class="hero-sub">
+        Final-year DS student building <strong>high-impact cybersecurity systems</strong> &mdash;
+        from packet analysis and ML inference to live threat detection dashboards that are practical and production-ready.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View My Projects</a>
+        <a href="resume.pdf" class="btn-outline" data-resume-fallback="mailto:saig21851@gmail.com?subject=Resume%20Request" data-resume-link download>Download Resume</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat reveal">
+          <div class="hero-stat-number" data-target="3" data-suffix="+">0</div>
+          <div class="hero-stat-label">Major Projects</div>
+        </div>
+        <div class="hero-stat reveal">
+          <div class="hero-stat-number" data-target="20" data-suffix="+">0</div>
+          <div class="hero-stat-label">Technologies</div>
+        </div>
+        <div class="hero-stat reveal">
+          <div class="hero-stat-number" data-target="100" data-suffix="%">0</div>
+          <div class="hero-stat-label">AI + Cybersecurity</div>
+        </div>
+        <div class="hero-stat reveal">
+          <div class="hero-stat-number" data-target="4" data-suffix="th">0</div>
+          <div class="hero-stat-label">Final Year</div>
+        </div>
+      </div>
+      <div class="hero-scroll"><div class="scroll-line"></div>Scroll to explore</div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="section-inner">
+        <div class="about-text reveal">
+          <p class="section-label">// 01. About</p>
+          <h2 id="about-title" class="section-title">Who I am</h2>
+          <p>I&apos;m <strong>Sai</strong>, a final-year <strong>B.Tech CSE (Data Science)</strong> student at <strong>Vignan Institute of Technology and Sciences, Hyderabad</strong>, focused on building security systems with real-world impact.</p>
+          <p>My work centers on <strong>cybersecurity engineering</strong> — from threat detection and phishing analysis to network monitoring and machine-learning-driven security pipelines. I&apos;m especially interested in building end-to-end systems that move from data capture to actionable insights.</p>
+          <p>I also founded <strong>DualTalk</strong>, an accessibility-focused initiative that reflects my interest in creating technology that is both secure and humane. The project complements my core focus by reinforcing my interest in practical AI and human-centered product design.</p>
+          <p>I&apos;m currently <strong>open to opportunities</strong> in software engineering, AI engineering, and cybersecurity engineering and I&apos;m ready to contribute from day one.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" aria-labelledby="education-title">
+      <div class="section-inner">
+        <p class="section-label reveal">// 02. Education &amp; Certifications</p>
+        <h2 id="education-title" class="section-title reveal">Academic background</h2>
+        <div class="edu-grid reveal">
+          <div class="edu-card">
+            <div class="edu-badge">DEGREE</div>
+            <div class="edu-title">B.Tech &mdash; Computer Science &amp; Engineering (Data Science)</div>
+            <div class="edu-sub">Vignan Institute of Technology and Sciences<br/>Hyderabad, Telangana</div>
+            <div class="edu-year">2023 &ndash; 2027 &middot; CSE (DS)</div>
+          </div>
+        </div>
+        <p class="cert-section-label reveal">// Certifications</p>
+        <div class="cert-list">
+          <div class="cert-item reveal">
+            <div class="cert-dot"></div>
+            <div class="cert-name">Frontend with HTML5 &amp; CSS3</div>
+            <div class="cert-issuer">TASK &middot; Aug 2024</div>
+          </div>
+          <div class="cert-item reveal">
+            <div class="cert-dot"></div>
+            <div class="cert-name">AWS Cloud Computing</div>
+            <div class="cert-issuer">Amazon Web Services &middot; Nov 2024</div>
+          </div>
+          <div class="cert-item reveal">
+            <div class="cert-dot"></div>
+            <div class="cert-name">Cyber Security</div>
+            <div class="cert-issuer">Deloitte &middot; Aug 2024</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <div class="section-inner">
+        <p class="section-label reveal">// 03. Skills</p>
+        <h2 id="skills-title" class="section-title reveal">What I work with</h2>
+        <div class="skills-focus-badge reveal">Focus: Threat Detection • Security Systems • AI Engineering</div>
+        <div class="skills-grid">
+          <div class="skill-card primary reveal">
+            <div class="skill-icon" aria-hidden="true">🔐</div>
+            <div class="skill-focus-label">Core Specialization</div>
+            <div class="skill-name">Cybersecurity</div>
+            <p style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);font-weight:300;margin-top:6px;">Threat detection, phishing analysis, domain intelligence, network security</p>
+            <div class="skill-tags">
+              <span class="tag hl">Threat Detection</span><span class="tag hl">Phishing Analysis</span>
+              <span class="tag hl">WHOIS / IP Intel</span><span class="tag hl">VirusTotal API</span>
+              <span class="tag hl">Network Security</span><span class="tag hl">Steganography</span>
+            </div>
+          </div>
+          <div class="skill-card primary reveal">
+            <div class="skill-icon" aria-hidden="true">🧠</div>
+            <div class="skill-focus-label">Core Specialization</div>
+            <div class="skill-name">ML for Security</div>
+            <p style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);font-weight:300;margin-top:6px;">Training security-specific ML models &mdash; anomaly detection, URL classification</p>
+            <div class="skill-tags">
+              <span class="tag hl">Scikit-learn</span><span class="tag hl">Isolation Forest</span>
+              <span class="tag hl">Pandas</span><span class="tag hl">NumPy</span><span class="tag hl">Feature Engineering</span>
+            </div>
+          </div>
+          <div class="skill-card primary reveal">
+            <div class="skill-icon" aria-hidden="true">⚙️</div>
+            <div class="skill-focus-label">Core Specialization</div>
+            <div class="skill-name">End-to-End Systems</div>
+            <p style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);font-weight:300;margin-top:6px;">Full pipelines: data capture to ML to live dashboards. Flask, Scapy, Streamlit</p>
+            <div class="skill-tags">
+              <span class="tag hl">Python</span><span class="tag hl">Flask</span>
+              <span class="tag hl">Scapy</span><span class="tag hl">Streamlit</span>
+              <span class="tag hl">SQLite</span><span class="tag hl">REST APIs</span>
+            </div>
+          </div>
+          <div class="skill-card reveal">
+            <div class="skill-icon" aria-hidden="true">🛠️</div>
+            <div class="skill-name">Tools &amp; Environment</div>
+            <p style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--muted);font-weight:300;margin-top:6px;">Dev workflow, version control, OS environment</p>
+            <div class="skill-tags">
+              <span class="tag">Git</span><span class="tag">GitHub</span>
+              <span class="tag">Linux</span><span class="tag">VS Code</span><span class="tag">HTML/CSS/JS</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-bars">
+          <div class="skill-bar-card reveal">
+            <div class="skill-bar-row">
+              <div class="skill-bar-head"><span>Python</span><span>95%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 95%"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-head"><span>Machine Learning</span><span>88%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 88%"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-head"><span>Cybersecurity</span><span>92%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 92%"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-head"><span>Flask</span><span>84%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 84%"></div></div>
+            </div>
+          </div>
+          <div class="skill-bar-card reveal">
+            <div class="skill-bar-row">
+              <div class="skill-bar-head"><span>OpenCV</span><span>86%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 86%"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-head"><span>MediaPipe</span><span>82%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 82%"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-head"><span>Git</span><span>90%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 90%"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-head"><span>GitHub</span><span>89%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 89%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="section-inner">
+        <p class="section-label reveal">// 04. Projects</p>
+        <h2 id="projects-title" class="section-title reveal">Things I&apos;ve built</h2>
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-num">PROJECT_01</div>
+            <h3 class="project-title">CyberShield</h3>
+            <p class="project-desc">AI-powered cyber threat detection platform that analyzes URLs, QR codes, and images to identify phishing attacks. It combines machine learning, domain intelligence, and threat APIs into a practical risk-scoring workflow.</p>
+            <div class="project-arch">
+              <span>Stack:</span> Python &middot; Flask &middot; Scikit-learn &middot; VirusTotal API &middot; WHOIS &middot; IP Lookup &middot; SQLite &middot; HTML/JS/Jinja<br/><br/>
+              <span>Pipeline:</span> URL / QR / image submitted &rarr; feature extraction &rarr; ML phishing classifier &rarr; WHOIS + IP geolocation &rarr; VirusTotal reputation check &rarr; risk score &rarr; dashboard + SQLite history log.
+            </div>
+            <div class="skill-tags" style="margin-bottom:20px;">
+              <span class="tag hl">ML Classification</span><span class="tag hl">Phishing Detection</span>
+              <span class="tag">QR Scanning</span><span class="tag">Steganography</span>
+              <span class="tag">VirusTotal</span><span class="tag">Flask</span><span class="tag">SQLite</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/Saigugulothu0309/Next-Gen-Cyber-Threat-Detection-System" class="project-btn" target="_blank" rel="noreferrer">GitHub Repository</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-num">PROJECT_02</div>
+            <h3 class="project-title">Smart Network Logger</h3>
+            <p class="project-desc">Passive network monitor that captures live packet traffic, engineers flow-level features, and detects anomalies using unsupervised ML with a real-time visual dashboard.</p>
+            <div class="project-arch">
+              <span>Stack:</span> Python &middot; Scapy &middot; Pandas &middot; Scikit-learn (Isolation Forest) &middot; Streamlit<br/><br/>
+              <span>Pipeline:</span> Scapy captures live packets &rarr; Pandas extracts flow-level features (bytes/sec, packet intervals, protocol ratios) &rarr; Isolation Forest scores anomalies &rarr; Streamlit shows real-time threat feed with configurable severity thresholds.
+            </div>
+            <div class="skill-tags" style="margin-bottom:20px;">
+              <span class="tag hl">Anomaly Detection</span><span class="tag hl">Isolation Forest</span>
+              <span class="tag">Scapy</span><span class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">Unsupervised ML</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/Saigugulothu0309/smart-network-logger" class="project-btn" target="_blank" rel="noreferrer">GitHub Repository</a>
+            </div>
+          </article>
+
+          <article class="project-card ongoing reveal">
+            <div class="project-num">PROJECT_03 <span class="badge-launched">V1 LAUNCHED</span></div>
+            <h3 class="project-title">DualTalk</h3>
+            <p class="project-desc">DualTalk V1 is a real-time accessibility platform that bridges communication between deaf and hearing individuals using AI-powered sign language recognition. Version 1 enables real-time sign-language-to-text communication using MediaPipe, OpenCV, and computer vision.</p>
+            <div class="project-arch">
+              <span>Version:</span> V1 Released<br/><br/>
+              <span>Current Features</span>
+              <ul>
+                <li>Real-time Gesture Recognition</li>
+                <li>Sign to Text</li>
+                <li>MediaPipe Hand Tracking</li>
+                <li>Computer Vision Pipeline</li>
+                <li>Responsive Web Interface</li>
+              </ul>
+              <br/>
+              <span>Upcoming Features</span>
+              <ul>
+                <li>Speech → Sign</li>
+                <li>AI Sentence Prediction</li>
+                <li>Video Calling</li>
+                <li>Cloud Sync</li>
+                <li>Multiple Languages</li>
+              </ul>
+            </div>
+            <div class="skill-tags" style="margin-bottom:20px;">
+              <span class="tag">MediaPipe</span><span class="tag">OpenCV</span>
+              <span class="tag">Computer Vision</span><span class="tag">Python</span><span class="tag">Accessibility</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://dualtalk-virid.vercel.app/" class="project-btn" target="_blank" rel="noreferrer">Live Demo</a>
+              <a href="https://github.com/Saigugulothu0309/dualtalk" class="project-btn" target="_blank" rel="noreferrer">GitHub Repository</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="section-inner">
+        <div class="contact-inner">
+          <div class="reveal">
+            <p class="section-label">// 05. Contact</p>
+            <h2 id="contact-title" class="section-title">Let&apos;s connect</h2>
+            <p>I&apos;m open to opportunities in software engineering, AI engineering, and cybersecurity engineering. If you have an opportunity or simply want to connect, reach out directly.</p>
+            <div class="contact-links">
+              <a href="mailto:saig21851@gmail.com" class="contact-link">
+                <div class="contact-link-icon" aria-hidden="true">&#9993;</div>
+                saig21851@gmail.com
+              </a>
+              <a href="https://www.linkedin.com/in/sai-gugulothu" class="contact-link" target="_blank" rel="noreferrer">
+                <div class="contact-link-icon" aria-hidden="true">in</div>
+                linkedin.com/in/sai-gugulothu
+              </a>
+              <a href="https://github.com/Saigugulothu0309" class="contact-link" target="_blank" rel="noreferrer">
+                <div class="contact-link-icon" aria-hidden="true">gh</div>
+                github.com/Saigugulothu0309
+              </a>
+            </div>
+            <div class="resume-bar">
+              <div class="resume-bar-text">
+                <strong>Resume available for download</strong>
+                B.Tech CSE (DS) &middot; Cybersecurity &middot; Class of 2027
+              </div>
+              <a href="resume.pdf" class="resume-dl" data-resume-fallback="mailto:saig21851@gmail.com?subject=Resume%20Request" data-resume-link download>Download PDF</a>
+            </div>
+          </div>
+
+          <form id="contactForm" class="contact-form reveal" novalidate>
+            <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name</label>
+              <input id="name" name="name" class="form-input" type="text" placeholder="Jane Smith" autocomplete="name" required />
+              <div id="name-error" class="form-error" aria-live="polite"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input id="email" name="email" class="form-input" type="email" placeholder="jane@company.com" autocomplete="email" required />
+              <div id="email-error" class="form-error" aria-live="polite"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Hi Sai, we have an opening that might suit you..." required></textarea>
+              <div id="message-error" class="form-error" aria-live="polite"></div>
+            </div>
+            <button class="form-btn" id="sendBtn" type="submit">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="btn-text">Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 <span>Sai Gugulothu</span>. Cybersecurity , Python Developer &middot; Class of 2027.</p>
+    <p>Open to <span>Software Engineer • AI Engineer • Cybersecurity Engineer Opportunities</span></p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    reveals.forEach((el) => revealObserver.observe(el));
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const element = entry.target;
+        const target = Number(element.dataset.target || 0);
+        const suffix = element.dataset.suffix || '';
+        const duration = 1200;
+        const startTime = performance.now();
+        const update = (now) => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(target * eased);
+          element.textContent = `${value}${suffix}`;
+          if (progress < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+        counterObserver.unobserve(element);
+      });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('.hero-stat-number').forEach((el) => counterObserver.observe(el));
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('primary-nav');
+    const navOverlay = document.getElementById('navOverlay');
+    const closeMenu = () => {
+      if (!navLinks || !navToggle) return;
+      navLinks.classList.remove('open');
+      navOverlay.classList.remove('show');
+      document.body.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navOverlay.classList.toggle('show', isOpen);
+        document.body.classList.toggle('nav-open', isOpen);
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    if (navOverlay) {
+      navOverlay.addEventListener('click', closeMenu);
+    }
+
+    document.querySelectorAll('.nav-links a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    const resumeLinks = Array.from(document.querySelectorAll('[data-resume-link]'));
+    const fallbackResumeMessage = (link) => {
+      const fallback = link.dataset.resumeFallback || 'mailto:saig21851@gmail.com?subject=Resume%20Request';
+      link.setAttribute('href', fallback);
+      link.setAttribute('title', 'Resume PDF unavailable — request it by email');
+      link.setAttribute('aria-label', 'Resume unavailable, request it by email');
+    };
+
+    const verifyResumeLink = async (link) => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('mailto:')) return;
+      try {
+        const response = await fetch(href, { method: 'HEAD' });
+        if (!response.ok) fallbackResumeMessage(link);
+      } catch (error) {
+        fallbackResumeMessage(link);
+      }
+    };
+
+    resumeLinks.forEach((link) => {
+      verifyResumeLink(link);
+    });
+
+    const form = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    const submitButton = document.getElementById('sendBtn');
+    const fields = {
+      name: document.getElementById('name'),
+      email: document.getElementById('email'),
+      message: document.getElementById('message')
+    };
+
+    const errorNodes = {
+      name: document.getElementById('name-error'),
+      email: document.getElementById('email-error'),
+      message: document.getElementById('message-error')
+    };
+
+    const setFieldError = (fieldName, message) => {
+      const field = fields[fieldName];
+      const errorNode = errorNodes[fieldName];
+      field.setAttribute('aria-invalid', 'true');
+      errorNode.textContent = message;
+    };
+
+    const clearFieldError = (fieldName) => {
+      const field = fields[fieldName];
+      const errorNode = errorNodes[fieldName];
+      field.setAttribute('aria-invalid', 'false');
+      errorNode.textContent = '';
+    };
+
+    const validateField = (fieldName) => {
+      const field = fields[fieldName];
+      const value = field.value.trim();
+
+      if (fieldName === 'name' && value.length < 2) {
+        setFieldError(fieldName, 'Please enter your full name.');
+        return false;
+      }
+
+      if (fieldName === 'email') {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(value)) {
+          setFieldError(fieldName, 'Please enter a valid email address.');
+          return false;
+        }
+      }
+
+      if (fieldName === 'message' && value.length < 10) {
+        setFieldError(fieldName, 'Please share a little more detail.');
+        return false;
+      }
+
+      clearFieldError(fieldName);
+      return true;
+    };
+
+    Object.entries(fields).forEach(([fieldName, field]) => {
+      field.addEventListener('input', () => validateField(fieldName));
+      field.addEventListener('blur', () => validateField(fieldName));
+    });
+
+    const showStatus = (type, message) => {
+      formStatus.className = `form-status ${type} show`;
+      formStatus.innerHTML = message;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const isNameValid = validateField('name');
+      const isEmailValid = validateField('email');
+      const isMessageValid = validateField('message');
+
+      if (!isNameValid || !isEmailValid || !isMessageValid) {
+        showStatus('error', 'Please fix the highlighted fields and try again.');
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.classList.add('loading');
+      submitButton.querySelector('.btn-text').textContent = 'Sending...';
+
+      try {
+        const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+
+        if (response.ok) {
+          showStatus('success', 'Thanks for reaching out — your message has been sent successfully.');
+          form.reset();
+          Object.values(errorNodes).forEach((node) => {
+            node.textContent = '';
+          });
+          Object.values(fields).forEach((field) => {
+            field.setAttribute('aria-invalid', 'false');
+          });
+        } else {
+          throw new Error('Unable to submit the form right now.');
+        }
+      } catch (error) {
+        showStatus('error', 'Something went wrong while sending the message. Please email me directly at saig21851@gmail.com.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.classList.remove('loading');
+        submitButton.querySelector('.btn-text').textContent = 'Send Message';
+      }
+    });
+  </script>
+</body>
+</html>
